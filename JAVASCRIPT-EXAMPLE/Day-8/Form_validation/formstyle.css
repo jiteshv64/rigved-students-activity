@@ -1,0 +1,17 @@
+table,th,td{
+  padding: 25px;
+  background-color: yellow;
+  font-weight: bold;
+}
+
+table{
+  border: 10px solid black;
+  margin-left: 35%;
+}
+
+h1{
+  text-align: center;
+  color: yellow;
+  font-size: 50px;
+  text-decoration: underline black;
+}
