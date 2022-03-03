@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculate Two Numbers</title>
+  </head>
+
+  <script>
+    // Adding:
+    function add() {
+      var n1 = parseInt(document.getElementById("n1").value);
+      var n2 = parseInt(document.getElementById("n2").value);
+      var addition = document.getElementById("add").value;
+
+      if (addition === "+") {
+        document.getElementById("result").value = n1 + n2;
+      }
+    }
+
+    //Subtracting:
+    function sub() {
+      var n1 = parseInt(document.getElementById("n1").value);
+      var n2 = parseInt(document.getElementById("n2").value);
+      var subtraction = document.getElementById("sub").value;
+
+      if (subtraction === "-") {
+        document.getElementById("result").value = n1 - n2;
+      }
+    }
+
+    // Multiplying:
+    function mul() {
+      var n1 = parseInt(document.getElementById("n1").value);
+      var n2 = parseInt(document.getElementById("n2").value);
+      var multiplication = document.getElementById("mul").value;
+
+      if (multiplication === "*") {
+        document.getElementById("result").value = n1 * n2;
+      }
+    }
+
+    // Dividing:
+    function divi() {
+      var n1 = parseInt(document.getElementById("n1").value);
+      var n2 = parseInt(document.getElementById("n2").value);
+      var division = document.getElementById("divi").value;
+
+      if (division === "/") {
+        document.getElementById("result").value = n1 / n2;
+      }
+    }
+  </script>
+
+  <style>
+    .container {
+      width: 500px; height: 500px; border: 10px solid black; padding: 5px;
+      margin: 10px; margin-left: 35%; margin-top: 10%; background-color: yellow;
+      border-radius: 5px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    input {
+      margin: 10px; padding: 10px;
+    }
+
+    .input {
+      margin-left: 90px; font-weight: bold;
+    }
+
+    #result {
+      margin-left: 31px;
+    }
+
+    .button {
+      margin: 30px; margin-left: 180px;
+    }
+
+    button {
+      padding: 10px; font-weight: bold;
+    }
+  </style>
+
+  <body>
+    <div class="container">
+      <h1>Calculate Two Numbers</h1>
+
+      <div class="input">
+        Number 1 :<input type="text" id="n1" /><br /><br />
+        Number 2 :<input type="text" id="n2" /><br /><br />
+        Result :
+        <input type="text" id="result" placeholder="&#61;" /><br /><br />
+      </div>
+
+      <div class="button">
+        <button id="add" value="+" onclick="add()">&#43;</button>
+        <button id="sub" value="-" onclick="sub()">&#8722;</button>
+        <button id="mul" value="*" onclick="mul()">&#215;</button>
+        <button id="divi" value="/" onclick="divi()">&#247;</button>
+      </div>
+      
+    </div>
+  </body>
+</html>

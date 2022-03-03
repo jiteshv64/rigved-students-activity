@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prompt OTP</title>
+
+    <script>
+      function enterOTP() {
+        let XYZ = prompt("Enter a OTP");
+        let digit = parseInt(XYZ);
+        let otp4 = Math.floor(Math.random() * 9999 + 1);
+        let otp6 = Math.floor(Math.random() * 999999 + 1);
+
+        switch (digit) {
+          case 4:
+            document.getElementById("otp").value = otp4;
+            break;
+
+          case 6:
+            document.getElementById("otp").value = otp6;
+            break;
+
+          default:
+            alert("Invalid digits to generate OTP use 4 or 6 !");
+            break;
+        }
+      }
+    </script>
+
+    <style>
+      .container{
+        width: 500px; height: 500px; margin-left: 35%; margin-top: 10%; border: 10px solid black; border-radius: 5px; background-color: yellow;
+      }
+
+      h1{
+        text-align: center; text-decoration: underline; margin-bottom: 100px;
+      }
+
+      button{
+        padding: 10px; border: 5px solid black; border-radius: 5px; font-weight: bold; margin-left: 38%; margin-bottom: 10%; background-color: lightgray;
+      }
+
+      #otp{
+        background-color: lightgray; padding: 10px; border: 5px solid black;
+        border-radius: 5px;
+      }
+
+      .input{
+        font-weight: bold; margin-left: 14%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Create OTP</h1>
+
+      <button onclick="enterOTP()">Generate OTP</button><br /><br />
+
+     <div class="input">
+      Get OTP = <input type="text" id="otp" />
+     </div>
+
+    </div>
+  </body>
+</html>
