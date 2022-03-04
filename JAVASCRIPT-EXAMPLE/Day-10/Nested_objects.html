@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nested_objects by JITESH</title>
+
+    <style>
+      table {
+        table-layout: fixed; width: 50%; border-collapse: collapse; border: 10px solid lightgray; border-radius: 10px; background-color: yellow;
+        margin-left: 26%; color: gray;
+      }
+
+      th, td {
+        padding: 20px; border: 5px solid lightgray; text-align: center; border-radius: 10px; 
+      }
+
+      h1{
+        text-align: center; text-decoration: underline; color: gray;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>Customer Info</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>CustomerId</th>
+          <th>FullName</th>
+          <th>State</th>
+          <th>City</th>
+        </tr>
+      </thead>
+      <tbody id="tableData"></tbody>
+    </table>
+
+    <script>
+      let Cinfo = [
+        {
+          customerId: 12345,
+          firstName: "Sachin",
+          lastName: "Tendulkar",
+          address: { state: "Maharashtra", city: "Mumbai" },
+        },
+        {
+          customerId: 28845,
+          firstName: "Rahul",
+          lastName: "Dravid",
+          address: { state: "Karnataka", city: "Banglore" },
+        },
+        {
+          customerId: 42446,
+          firstName: "Rohit",
+          lastName: "Sharma",
+          address: { state: "Maharashtra", city: "Pune" },
+        },
+      ];
+
+      var table = "<tbody>";
+      for (i = 0; i < Cinfo.length; i++) {
+        table += "<tr>";
+        table += "<td>" + Cinfo[i].customerId + "</td>";
+        table += "<td>" + Cinfo[i].firstName + " " + Cinfo[i].lastName + "</td>";
+        table += "<td>" + Cinfo[i].address.state + "</td>";
+        table += "<td>" + Cinfo[i].address.city + "</td>";
+        table += "</tr>";
+      }
+      table += "</tbody>";
+      document.getElementById("tableData").innerHTML = table;
+    </script>
+  </body>
+</html>
