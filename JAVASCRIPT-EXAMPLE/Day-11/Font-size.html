@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #container{
+        text-align: center; border: 10px solid black; width: 800px;
+        height: 800px; background-color: lightgray; margin-left: 35%;
+        padding-top: 100px; border-radius: 10px;
+      }
+
+      button{
+        padding: 10px; border: 5px solid black; margin: 10px; border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <button id="btn1" onclick="incrementf()">INCREMENT</button>
+
+      <button id="btn2" onclick="decrementf()">DECREMENT</button>
+
+      <h1 id="heading">Welcome to JS(JAVASCRIPT)</h1>
+
+      
+    </div>
+    <script>
+      let heading = document.getElementById("heading");
+      let btn1 = document.getElementById("btn1");
+      let btn2 = document.getElementById("btn2");
+      let container = document.getElementById("container");
+      function incrementf() {
+        heading.style.fontSize = "64px";
+        heading.style.color = "yellow";
+        btn1.style.backgroundColor = "yellow";
+        btn2.style.backgroundColor = "lightgray";
+        container.style.backgroundColor = "red";
+      }
+
+      function decrementf() {
+        heading.style.fontSize = "32px";
+        heading.style.color = "red";
+        btn2.style.backgroundColor = "red";
+        btn1.style.backgroundColor = "lightgray";
+        container.style.backgroundColor = "yellow";
+      }
+    </script>
+  </body>
+</html>
