@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Second Page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="topnav">
+    <a href="FIRST_PAGE.html">Home</a>
+    <a href="#">Storage</a>
+    <a href="THIRD_PAGE.html">Editing</a>
+  </div>
+  
+  <div class="container">
+    <h1>Storing Data</h1>
+    <h2>Session Storage</h2>
+    <p id="p1"></p>
+    <p id="p2"></p>
+    <h2>Local Storage</h2>
+    <p id="p3"></p>
+    <p id="p4"></p>
+  </div>
+    <script>
+      var dname1 = sessionStorage.getItem('Name');
+      var dname2 = localStorage.getItem('Name');
+
+      var dage1 = sessionStorage.getItem('Age');
+      var dage2 = localStorage.getItem('Age');
+
+      document.getElementById('p1').innerHTML = "Name : " + dname1;
+      document.getElementById('p2').innerHTML = "Age : " + dage1;
+
+      document.getElementById('p3').innerHTML = "Name : " + dname2;
+      document.getElementById('p4').innerHTML = "Age : " + dage2;
+
+    </script>
+</body>
+</html>

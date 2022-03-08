@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Third Page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+  <body>
+    <div class="topnav">
+      <a href="FIRST_PAGE.html">Home</a>
+      <a href="SECOND_PAGE.html">Storage</a>
+      <a href="#">Editing</a>
+    </div>
+    
+    <div class="container">
+      <h1>Edit Data</h1>
+     <div>
+      <div class="fsize">Name : <input type="text" name="n1" id="i1" placeholder="New name"></div><br>
+      <div class="btnshift">
+        <button class="btn" onclick="editName()">DELETE</button>
+      <button class="btn"  id="btnN" type="submit" onclick="storeName()">SAVE</button>
+      </div>
+     </div>
+     <br>
+     <br>
+
+      <div>
+        <div class="fsize sage" >Age : <input type="number" name="n2" id="i2" placeholder="New age"></div><br>
+        <div class="btnshift">
+          <button class="btn" onclick="editAge()">DELETE</button>
+        <button class="btn" id="btnA" type="submit" onclick="storeAge()">SAVE</button>
+        </div>
+      </div>
+
+    </div>
+    <script>
+      function editName(){
+          let n = confirm("It will delete your previous details. Sure you want to DELETE name!!!");
+          if(n == true){
+            sessionStorage.removeItem('Name');
+            localStorage.removeItem('Name');
+          }
+        }
+
+      function storeName(){
+        var name = document.getElementById('i1').value;
+      if(name.length < 1) {
+          alert(`"Pleage give your Name"`);
+        }else {
+          sessionStorage.setItem('Name', name);
+          localStorage.setItem('Name', name);
+        }
+      }
+
+      function editAge(){
+        let a = confirm("It will delete your previous details. Sure want to DELETE age!!!");
+        if(a == true) {
+          sessionStorage.removeItem('Age');
+          localStorage.removeItem('Age');
+        }
+      }
+
+      function storeAge(){
+        var age = document.getElementById('i2').value;
+      if(age.length < 1) {
+          alert(`"Pleage give your Age"`);
+        }else {
+          sessionStorage.setItem('Age', age);
+          localStorage.setItem('Age', age);
+        }
+      }
+    </script>
+  </body>
+  </html>
