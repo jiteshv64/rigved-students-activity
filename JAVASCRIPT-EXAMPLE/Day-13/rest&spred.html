@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <div class="container" style="margin-left: 35%;">
+    <h1 id="i1"></h1>
+    <h1 id="i2"></h1>
+    <h1 id="i3"></h1>
+    <h1 id="i4"></h1>
+    <h1 id="i5"></h1>
+  </div>
+    <script>
+        function calci(a, ...b){
+          let total = a;
+          let min = total;
+          let max = total;
+          for(let i = 0; i < b.length; i++){
+            if(min > b[i]){
+              min = b[i];
+            }else if(max < b[i]){
+              max = b[i];
+            }
+            total += b[i];
+          }
+          document.getElementById('i1').innerHTML = "Sum is : " + total;
+          document.getElementById('i2').innerHTML = "Minium number is : " + min;
+          document.getElementById('i3').innerHTML = "Maximum number is : " + max;
+          document.getElementById('i4').innerHTML = "a : " + a;
+          document.getElementById('i5').innerHTML = "b : " + b;
+        }
+        calci(10,20,30,5,15);
+    </script>
+</body>
+</html>
