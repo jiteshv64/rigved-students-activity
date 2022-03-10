@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Template string table by JITESH</title>
+  <style>
+    table {
+      table-layout: fixed; width: 50%; border-collapse: collapse; border: 10px solid lightgray; border-radius: 10px; background-color: yellow;
+      margin-left: 26%; color: gray;
+    }
+
+    th, td {
+      padding: 20px; border: 5px solid lightgray; text-align: center; border-radius: 10px; 
+    }
+
+    h1{
+      text-align: center; text-decoration: underline; color: gray;
+    }
+  </style>
+</head>
+<body>
+  <h1>Users Info</h1>
+  <table>
+    <thead>
+      <tr>
+        <th rowspan="2" >Name</th>
+        <th rowspan="2" >Age</th>
+        <th colspan="2" >Address</th>
+      </tr>
+      <tr>
+        <th>State</th>
+        <th>City</th>
+      </tr>
+    </thead>
+    <tbody id="tableData"></tbody>
+  </table>
+
+  <script>
+    let users = [
+      {name: 'Alex', age: 35, address: {state: 'Karnataka', city: 'Banglore'}},
+      {name: 'Bruce', age: 45},    
+      {name: 'Charles', age: 30, address: {state: 'Tamilnadu', city: 'Chennai'}},
+      {name: 'David', age: 49},
+      {name: 'Edward', age: 33, address: {state: 'Maharashtra', city: 'Mumbai'}},
+    ];
+
+    var table = '<tbody>';
+    for(let i = 0; i < users?.length; i++){
+      table += `<tr>`;
+      table += `<td> ${users[i]?.name} </td>`;
+      table += `<td> ${users[i]?.age} </td>`;
+      table += `<td> ${users[i]?.address?.state} </td>`;
+      table += `<td> ${users[i]?.address?.city} </td>`;
+      table += `</tr>`;
+    }
+    table += "</tbody>";
+    document.getElementById("tableData").innerHTML = table;  
+
+  </script>
+</body>
+</html>

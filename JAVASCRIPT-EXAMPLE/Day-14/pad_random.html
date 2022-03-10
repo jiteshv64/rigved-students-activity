@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pad Random no. by Jitesh</title>
+  </head>
+  <body>
+    <div style="text-align: center;">
+      <h1 style="text-decoration: underline;">Random Number</h1>
+      Get Number : <input style="padding: 10px;" type="text" id="i1" /><br /><br />
+      <button style="padding: 10px;" onclick="padStart()">padStart</button>
+      <button style="padding: 10px;" onclick="padEnd()">padEnd</button>
+    </div>
+    <script>
+      function padStart() {
+        let str1 = parseInt(Math.random() * 999999);
+        let str2 = String(str1);
+        let r1 = str2.padStart(6, "0");
+        document.getElementById("i1").value = r1;
+      }
+
+      function padEnd() {
+        let str3 = parseInt(Math.random() * 999999);
+        let str4 = String(str3);
+        let r2 = str4.padEnd(6, "0");
+        document.getElementById("i1").value = r2;
+      }
+    </script>
+  </body>
+</html>
