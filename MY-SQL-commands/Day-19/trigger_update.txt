@@ -1,0 +1,73 @@
+mysql> create table user (userId int primary key, name varchar(15), password int)$$
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> desc user$$
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| userId   | int         | NO   | PRI | NULL    |       |
+| name     | varchar(15) | YES  |     | NULL    |       |
+| password | int         | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> create table user_history (userID int, name varchar(15), old_password int, time time)$$
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc user_history$$
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| userID       | int         | YES  |     | NULL    |       |
+| name         | varchar(15) | YES  |     | NULL    |       |
+| old_password | int         | YES  |     | NULL    |       |
+| time         | time        | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+4 rows in set (0.02 sec)
+
+mysql> insert into user values(1, 'Alex', 4444);
+    -> $$
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into user values(2, 'Bruce', 5555)$$
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from user$$
++--------+-------+----------+
+| userId | name  | password |
++--------+-------+----------+
+|      1 | Alex  |     4444 |
+|      2 | Bruce |     5555 |
++--------+-------+----------+
+2 rows in set (0.00 sec)
+
+mysql> select * from user_history$$
+Empty set (0.01 sec)
+
+mysql> create trigger update_user_history
+    -> before update on user for each row
+    -> begin
+    -> insert into user_history values(old.userId, old.name, old.password, current_time());
+    -> end$$
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> update user set password = 1111 where userId = 1$$
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from user$$
++--------+-------+----------+
+| userId | name  | password |
++--------+-------+----------+
+|      1 | Alex  |     1111 |
+|      2 | Bruce |     5555 |
++--------+-------+----------+
+2 rows in set (0.00 sec)
+
+mysql> select * from user_history$$
++--------+------+--------------+----------+
+| userID | name | old_password | time     |
++--------+------+--------------+----------+
+|      1 | Alex |         4444 | 18:19:01 |
++--------+------+--------------+----------+
+1 row in set (0.00 sec)
