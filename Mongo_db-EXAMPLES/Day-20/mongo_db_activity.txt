@@ -1,0 +1,123 @@
+---
+> show dbs;
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> use mydb;
+switched to db mydb
+> db.createCollection("myCollection");
+{ "ok" : 1 }
+> show collections;
+myCollection
+> db.myCollection.insert({_id:12, name:"Alex"});
+WriteResult({ "nInserted" : 1 })
+> db.myCollection.insert({name:"Bruce"});
+WriteResult({ "nInserted" : 1 })
+> db.myCollection.insert({firstname:"Bruce", lastname:"John"});
+WriteResult({ "nInserted" : 1 })
+> db.myCollection.find();
+{ "_id" : 12, "name" : "Alex" }
+{ "_id" : ObjectId("62384a875cf04e742aec1e3d"), "name" : "Bruce" }
+{ "_id" : ObjectId("62384aaf5cf04e742aec1e3e"), "firstname" : "Bruce", "lastname" : "John" }
+> db.myCollection.insertOne({_id:13, name: "Sachin"});
+{ "acknowledged" : true, "insertedId" : 13 }
+> db.myCollection.insertOne({name: "Vijay"});
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("62384b265cf04e742aec1e3f")
+}
+> db.myCollection.find();
+{ "_id" : 12, "name" : "Alex" }
+{ "_id" : ObjectId("62384a875cf04e742aec1e3d"), "name" : "Bruce" }
+{ "_id" : ObjectId("62384aaf5cf04e742aec1e3e"), "firstname" : "Bruce", "lastname" : "John" }
+{ "_id" : 13, "name" : "Sachin" }
+{ "_id" : ObjectId("62384b265cf04e742aec1e3f"), "name" : "Vijay" }
+> db.myCollection.insertMany([{_id:33, name:"Rajesh"},{_id:44, name:"Ajay"},{firstname:"Sourav",lastname:"Ganguly"}]);
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                33,
+                44,
+                ObjectId("62384c425cf04e742aec1e40")
+        ]
+}
+> db.createCollection("employee");
+{ "ok" : 1 }
+> show collections;
+employee
+myCollection
+> db.employee.insert({_emp_id: 10, name: "Raj", salary: 35000});
+WriteResult({ "nInserted" : 1 })
+> db.employee.insert({_emp_id: 11, name: "Rajesh", salary: 45000});
+WriteResult({ "nInserted" : 1 })
+> db.employee.insert({_emp_id: 12, name: "Ram", salary: 55000});
+WriteResult({ "nInserted" : 1 })
+> db.employee.find();
+{ "_id" : ObjectId("62384d555cf04e742aec1e41"), "_emp_id" : 10, "name" : "Raj", "salary" : 35000 }
+{ "_id" : ObjectId("62384d745cf04e742aec1e42"), "_emp_id" : 11, "name" : "Rajesh", "salary" : 45000 }
+{ "_id" : ObjectId("62384d915cf04e742aec1e43"), "_emp_id" : 12, "name" : "Ram", "salary" : 55000 }
+> db.createCollection("EMPLOYEE");
+{ "ok" : 1 }
+> show collections;
+EMPLOYEE
+employee
+myCollection
+> db.EMPLOYEE.insertOne({_id: 13, name: "Sam", salary: 30000});
+{ "acknowledged" : true, "insertedId" : 13 }
+> db.EMPLOYEE.insertOne({_id: 14, name: "Sagar", salary: 40000});
+{ "acknowledged" : true, "insertedId" : 14 }
+> db.EMPLOYEE.insertOne({_id: 15, name: "Sourav", salary: 50000});
+{ "acknowledged" : true, "insertedId" : 15 }
+> db.EMPLOYEE.insertOne({name: "Sourav", salary: 50000});
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("62384f255cf04e742aec1e44")
+}
+> db.EMPLOYEE.find();
+{ "_id" : 13, "name" : "Sam", "salary" : 30000 }
+{ "_id" : 14, "name" : "Sagar", "salary" : 40000 }
+{ "_id" : 15, "name" : "Sourav", "salary" : 50000 }
+{ "_id" : ObjectId("62384f255cf04e742aec1e44"), "name" : "Sourav", "salary" : 50000 }
+> db.createCollection("user");
+{ "ok" : 1 }
+> show collections;
+EMPLOYEE
+employee
+myCollection
+user
+> db.user.insertOne({_id: 11, name: "Alex", password: 1111});
+{ "acknowledged" : true, "insertedId" : 11 }
+> db.user.insertOne({_id: 22, name: "Bruce", password: 2222});
+{ "acknowledged" : true, "insertedId" : 22 }
+> db.user.insertOne({_id: 33, name: "Cyril", password: 3333});
+{ "acknowledged" : true, "insertedId" : 33 }
+> db.user.find();
+{ "_id" : 11, "name" : "Alex", "password" : 1111 }
+{ "_id" : 22, "name" : "Bruce", "password" : 2222 }
+{ "_id" : 33, "name" : "Cyril", "password" : 3333 }
+> db.user.find({_id: 11});
+{ "_id" : 11, "name" : "Alex", "password" : 1111 }
+> db.user.deleteOne({_id: 11});
+{ "acknowledged" : true, "deletedCount" : 1 }
+> db.user.find();
+{ "_id" : 22, "name" : "Bruce", "password" : 2222 }
+{ "_id" : 33, "name" : "Cyril", "password" : 3333 }
+> db.user.remove({});
+WriteResult({ "nRemoved" : 2 })
+> db.user.find();
+> db.user.insertOne({_id: 100, name: "David", password: 100100});
+{ "acknowledged" : true, "insertedId" : 100 }
+> db.user.insertOne({_id: 200, name: "Eila", password: 200200});
+{ "acknowledged" : true, "insertedId" : 200 }
+> db.user.insertOne({_id: 300, name: "Girish", password: 300300});
+{ "acknowledged" : true, "insertedId" : 300 }
+> db.user.find();
+{ "_id" : 100, "name" : "David", "password" : 100100 }
+{ "_id" : 200, "name" : "Eila", "password" : 200200 }
+{ "_id" : 300, "name" : "Girish", "password" : 300300 }
+> db.user.update({_id: 100}, {$set: {"password": 400400}});
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.user.find();
+{ "_id" : 100, "name" : "David", "password" : 400400 }
+{ "_id" : 200, "name" : "Eila", "password" : 200200 }
+{ "_id" : 300, "name" : "Girish", "password" : 300300 }

@@ -1,6 +1,6 @@
 
 mysql> create table person (id int primary key, name varchar(15), gender varchar(15));
-Query OK, 0 rows affected (0.04 sec)
+Query OK, 0 rows affected (0.07 sec)
 
 mysql> desc person;
 +--------+-------------+------+-----+---------+-------+
@@ -10,7 +10,7 @@ mysql> desc person;
 | name   | varchar(15) | YES  |     | NULL    |       |
 | gender | varchar(15) | YES  |     | NULL    |       |
 +--------+-------------+------+-----+---------+-------+
-3 rows in set (0.01 sec)
+3 rows in set (0.00 sec)
 
 mysql> insert into person values(10, 'Raj', 'Male');
 Query OK, 1 row affected (0.01 sec)
@@ -27,41 +27,47 @@ mysql> select * from person;
 +----+------+--------+
 2 rows in set (0.00 sec)
 
-mysql> delimiter $$
-
+mysql> call desc_person(10)$$
+ERROR 1305 (42000): PROCEDURE rigved_db.desc_person does not exist
 mysql> create procedure desc_person(IN personId int)
     -> begin
-    -> declare gen varchar(15);
     -> declare nam varchar(15);
-    -> select gender into gen from person where id = personId;
-    -> select name into nam from person where id = personId;
-    -> if gen = 'Male'
-    -> then update person set name = concat('Mr.',nam) where id = personid;
-    -> else update person set name = concat('Ms.',nam) where id = personId;
+    -> declare gen varchar(15);
+    -> select name, gender into nam, gen from person where id = personId;
+    -> if gen = 'Male' then
+    -> select concat('Mr.', nam);
+    -> else select concat('Ms.', nam);
     -> end if;
-    -> end $$
+    -> end
+    -> $$
 Query OK, 0 rows affected (0.01 sec)
 
 mysql> call desc_person(10)$$
-Query OK, 1 row affected (0.01 sec)
++--------------------+
+| concat('Mr.', nam) |
++--------------------+
+| Mr.Raj             |
++--------------------+
+1 row in set (0.00 sec)
 
-mysql> select * from person$$
-+----+--------+--------+
-| id | name   | gender |
-+----+--------+--------+
-| 10 | Mr.Raj | Male   |
-| 11 | Alia   | Female |
-+----+--------+--------+
-2 rows in set (0.00 sec)
+Query OK, 0 rows affected (0.02 sec)
 
 mysql> call desc_person(11)$$
-Query OK, 1 row affected (0.01 sec)
++--------------------+
+| concat('Ms.', nam) |
++--------------------+
+| Ms.Alia            |
++--------------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.03 sec)
+
 
 mysql> select * from person$$
-+----+---------+--------+
-| id | name    | gender |
-+----+---------+--------+
-| 10 | Mr.Raj  | Male   |
-| 11 | Ms.Alia | Female |
-+----+---------+--------+
++----+------+--------+
+| id | name | gender |
++----+------+--------+
+| 10 | Raj  | Male   |
+| 11 | Alia | Female |
++----+------+--------+
 2 rows in set (0.00 sec)
