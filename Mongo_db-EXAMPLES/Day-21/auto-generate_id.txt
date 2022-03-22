@@ -1,0 +1,57 @@
+db.createCollection("auto");
+{ "ok" : 1 }
+> db.auto.insert({_id: "a_id", sequence_value : 0});
+WriteResult({ "nInserted" : 1 })
+> function getValue(sequenceValue) {
+...   let sequence = db.auto.findAndModify({
+...     query: {_id: sequenceValue},
+...     update: {$inc: {sequence_value: 1}},
+...     new: true
+...   });
+...   return sequence.sequence_value;
+... }
+>
+> db.auto.insert({"_id": getValue("a_id"), "emp_name": "King", "emp_age": 30, "emp_salary": 30000});
+WriteResult({ "nInserted" : 1 })
+> db.auto.find();
+{ "_id" : "a_id", "sequence_value" : 1 }
+{ "_id" : 1, "emp_name" : "King", "emp_age" : 30, "emp_salary" : 30000 }
+> db.auto.insert({"_id": getValue("a_id"), "emp_name": "Queen", "emp_age": 28, "emp_salary": 35000});
+WriteResult({ "nInserted" : 1 })
+> db.auto.insert({"_id": getValue("a_id"), "emp_name": "Joker", "emp_age": 35, "emp_salary": 25000});
+WriteResult({ "nInserted" : 1 })
+> db.auto.find();
+{ "_id" : "a_id", "sequence_value" : 3 }
+{ "_id" : 1, "emp_name" : "King", "emp_age" : 30, "emp_salary" : 30000 }
+{ "_id" : 2, "emp_name" : "Queen", "emp_age" : 28, "emp_salary" : 35000 }
+{ "_id" : 3, "emp_name" : "Joker", "emp_age" : 35, "emp_salary" : 25000 }
+
+
+> db.createCollection("University");
+{ "ok" : 1 }
+> db.University.insert({_id: "s_id", sequence_value : 0});
+WriteResult({ "nInserted" : 1 })
+> db.University.find();
+{ "_id" : "s_id", "sequence_value" : 0 }
+> function getValue1(sequenceValue1) {
+...   let sequence = db.University.findAndModify({
+...     query: {_id: sequenceValue1},
+...     update: {$inc: {sequence_value: 1}},
+...     new: true
+...   });
+...   return "RIG" + sequence.sequence_value;
+... }
+> db.University.insert({"_id": getValue1("s_id"), "name": "King"});
+WriteResult({ "nInserted" : 1 })
+> db.University.find();
+{ "_id" : "s_id", "sequence_value" : 1 }
+{ "_id" : "RIG1", "name" : "King" }
+> db.University.insert({"_id": getValue1("s_id"), "name": "Queen"});
+WriteResult({ "nInserted" : 1 })
+> db.University.insert({"_id": getValue1("s_id"), "name": "Joker"});
+WriteResult({ "nInserted" : 1 })
+> db.University.find();
+{ "_id" : "s_id", "sequence_value" : 3 }
+{ "_id" : "RIG1", "name" : "King" }
+{ "_id" : "RIG2", "name" : "Queen" }
+{ "_id" : "RIG3", "name" : "Joker" }
