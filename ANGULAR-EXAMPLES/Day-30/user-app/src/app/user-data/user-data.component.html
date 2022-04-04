@@ -12,11 +12,11 @@
                   </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let y of userList">
-                    <td>{{y.name | title: y.gender | uppercase}}</td>
-                    <td>{{y.gender | uppercase}}</td>
-                    <td>{{y.address.state}}</td>
-                    <td>{{y.address.city}}</td>
+                <tr *ngFor="let x of userList">
+                    <td>{{x.name | title: x.gender | uppercase}}</td>
+                    <td>{{x.gender | uppercase}}</td>
+                    <td>{{x.address.state}}</td>
+                    <td>{{x.address.city}}</td>
                 </tr>
             </tbody>
         </table>

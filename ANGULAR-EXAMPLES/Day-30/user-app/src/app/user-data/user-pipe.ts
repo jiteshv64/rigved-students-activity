@@ -12,7 +12,7 @@ export class CustomTitle implements PipeTransform{
             case 'Female':
                 return `Ms. ${value}`
             default:
-                return `Select proper gender`
+                return `Gender ? `
         }
     }
 }
