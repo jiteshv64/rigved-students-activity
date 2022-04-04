@@ -1,0 +1,23 @@
+<div>
+        <table>
+            <thead>
+                <tr>
+                    <th rowspan="2">Name</th>
+                    <th rowspan="2">Gender</th>
+                    <th colspan="2">Address</th>
+                </tr>
+                <tr>
+                    <th>State</th>
+                    <th>City</th>
+                  </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let y of userList">
+                    <td>{{y.name | title: y.gender | uppercase}}</td>
+                    <td>{{y.gender | uppercase}}</td>
+                    <td>{{y.address.state}}</td>
+                    <td>{{y.address.city}}</td>
+                </tr>
+            </tbody>
+        </table>
+</div>
