@@ -1,0 +1,19 @@
+<div>
+  <h2>Student Records</h2>
+  <table *ngIf = "students" class="table table-striped">
+    <thead>
+      <tr>
+        <th>RollNo</th>
+        <th>Name</th>
+        <th>Marks</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of students">
+        <td>{{s.rollNo}}</td>
+        <td>{{s.name}}</td>
+        <td [style.color]="s.marks < 40? 'red' : 'lightgreen'">{{s.marks}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
