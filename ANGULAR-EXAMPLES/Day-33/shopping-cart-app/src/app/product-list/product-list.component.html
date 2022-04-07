@@ -1,0 +1,8 @@
+<div *ngFor="let p of products">
+  <div class="form-control">
+        <h5>Product Name : <p>{{p.product}}</p></h5>
+        <h5>Price (&#8377;) : <p>{{p.price}}</p></h5>
+        <button type="button" class="btn btn-success" (click)="add(p.price)">Add</button><br><br>
+        <button type="button" class="btn btn-danger" (click)="remove(p.price)">Remove</button><br>
+      </div>
+</div>
