@@ -1,0 +1,180 @@
+<div class="container-fluid">
+  <h1>Registration Form</h1>
+  <br>
+  <form 
+    #user="ngForm"
+    (ngSubmit)="handleSubmit(user.value)"
+    class="row g-3 needs-validation form-control"
+  >
+    <!-- Firstname -->
+    <div class="row-md-3">
+      <label for="validationCustom01" class="form-label">First name :</label>
+      <input
+        type="text"
+        class="form-control"
+        value="firstname"
+        required
+        name="firstname"
+        ngModel
+        #firstname="ngModel"
+        minlength="3"
+        autocomplete="off"
+      />
+
+      <span
+        [hidden]="firstname.valid || firstname.pristine"
+        class="text-danger"
+      >
+        *More than 3 characters
+      </span>
+    </div>
+
+    <!-- Lastname -->
+    <div class="row-md-3">
+      <label for="validationCustom01" class="form-label">Last name :</label>
+      <input
+        type="text"
+        class="form-control"
+        value="lastname"
+        required
+        name="lastname"
+        ngModel
+        #lastname="ngModel"
+        minlength="3"
+        autocomplete="off"
+      />
+
+      <span [hidden]="lastname.valid || lastname.pristine" class="text-danger">
+        *More than 3 characters
+      </span>
+    </div>
+
+    <!-- Gender -->
+    <div class="row-md-3">
+      <label class="form-label">Gender :</label>
+      <p>
+        <input
+          type="radio"
+          value="male"
+          name="gender"
+          required
+          ngModel
+          #gender="ngModel"
+        />
+        Male
+        <input
+          type="radio"
+          value="female"
+          name="gender"
+          required
+          ngModel
+          #gender="ngModel"
+        />
+        Female
+      </p>
+      <span *ngIf="gender.invalid" class="text-danger">Gender required.</span>
+    </div>
+
+    <!-- Skills -->
+    <div class="row-mb-3">
+      <label class="form-label">Skills :</label>
+      <p>
+        <input
+          type="checkbox"
+          name="skills"
+          required
+          ngModel
+          #skills="ngModel"
+        />
+        Java &nbsp;
+        <input
+          type="checkbox"
+          name="skills"
+          required
+          ngModel
+          #skills="ngModel"
+        />
+        Javascript &nbsp;
+        <input
+          type="checkbox"
+          name="skills"
+          required
+          ngModel
+          #skills="ngModel"
+        />
+        Angular &nbsp;
+        <input
+          type="checkbox"
+          name="skills"
+          required
+          ngModel
+          #skills="ngModel"
+        />
+        Python &nbsp;
+      </p>
+      <span *ngIf="skills.invalid" class="text-danger">Skills Required!</span>
+    </div>
+
+    <!-- Qualification -->
+    <div class="row-mb-3">
+      <label class="form-label">Qualification :</label><br />
+      <select
+        class="custom-select"
+        name="qualification"
+        ngModel
+        #q1="ngModel"
+        required
+      >
+        <option value="" class="text-primary font-weight-bolder">
+          --- Select Qualification ---
+        </option>
+        <option *ngFor="let q of qualifications">
+          {{ q.name }}
+        </option>
+      </select>
+      <br />
+      <span *ngIf="q1.invalid" class="text-danger"
+        >Qualification Required!</span
+      >
+    </div>
+    <br />
+
+    <!-- Address -->
+    <div class="row-mb-3">
+      <label class="form-label">Address :</label><br />
+      <textarea
+        name="address"
+        cols="30"
+        rows="10"
+        ngModel
+        #add="ngModel"
+        required
+        minlength="3"
+      ></textarea>
+      <br />
+      <span *ngIf="add.invalid" class="text-danger">Address Required!</span>
+    </div>
+
+    <div class="row-mb-3">
+      <button class="btn btn-primary" type="submit" [disabled]="user.invalid">
+        Submit form
+      </button>
+    </div>
+    <br>
+  </form>
+<br>
+
+  <div class="row-mb-3" [hidden]="user.invalid" id="review">
+    <form
+    class="form-control row g-2 needs-validation"
+  >
+    <h1>Review :</h1>
+    Firstname : <input type="text" value="{{ firstname.value }}" />
+    lastname : <input type="text" value="{{ lastname.value }}" />
+    Gender : <input type="text" value="{{ gender.value }}" />
+    Skills : <input type="text" value="{{ skills.value | json }}" />
+    Qualification : <input type="text" value="{{ q1.value }}" />
+    Address : <input type="text" value="{{ add.value }}" />
+  </form>
+  </div>
+</div>
