@@ -1,0 +1,48 @@
+<div>
+  <h2>First-name & Last-name</h2>
+  <form class="form-control mb-3 form-control-lg">
+    <label class="form-label">
+      Firstname :
+      <input
+        type="text"
+        value="firstname"
+        required
+        name="firstname"
+        [formControl]="firstname"
+        minlength="3"
+        autocomplete="off"
+      />
+    </label>
+    <span [hidden]="firstname.valid || firstname.pristine" class="text-danger">
+      *More than 3 characters
+    </span>
+
+    <hr />
+
+    <label class="form-label">
+      Lastname :
+      <input
+        type="text"
+        value="lastname"
+        required
+        name="lastname"
+        [formControl]="lastname"
+        minlength="3"
+        autocomplete="off"
+      />
+    </label>
+    <span [hidden]="lastname.valid || lastname.pristine" class="text-danger form-text">
+      *More than 3 characters
+    </span>
+  </form>
+
+  <div>
+    First-name : {{ firstname.value }} <br />
+    Last-name : {{ lastname.value }}
+
+    <p [hidden]="lastname.invalid" class="form-text">
+      Hi, {{ firstname.value }} {{ lastname.value }}, How are you ?
+    </p>
+  </div>
+</div>
+
