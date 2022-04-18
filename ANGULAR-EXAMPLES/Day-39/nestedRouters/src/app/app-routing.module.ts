@@ -6,12 +6,13 @@ import { ProfileDeleteComponent } from './profile-delete/profile-delete.componen
 import { PRegisterSuccessComponent } from './p-register-success/p-register-success.component';
 import { ProfileUpdateComponent } from './profile-update/profile-update.component';
 import { ProfileLoginComponent } from './profile-login/profile-login.component';
+import { AuthenticGuard } from './authentic.guard';
 
 const routes: Routes = [
   { path: '', component: ProfileLoginComponent },
   { path: 'login', component: ProfileLoginComponent },
   { path: 'store', component: ProfileStoreComponent },
-  {path: 'success/:name', component: PRegisterSuccessComponent,
+  {path: 'success/:name', component: PRegisterSuccessComponent,canActivate: [AuthenticGuard],
     children: [
       { path: '', component: ProfileListComponent },
       { path: 'profileList', component: ProfileListComponent },

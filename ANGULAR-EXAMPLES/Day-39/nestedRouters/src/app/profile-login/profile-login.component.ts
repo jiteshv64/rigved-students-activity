@@ -12,6 +12,7 @@ export class ProfileLoginComponent implements OnInit {
   constructor(private _router : Router) { }
 
   ngOnInit(): void {
+    sessionStorage.clear();
   }
 
   username = new FormControl('');
@@ -19,6 +20,8 @@ export class ProfileLoginComponent implements OnInit {
     let name = this.username.value;
     this._router.navigate(['/store']); 
     console.log(name);
+
+    sessionStorage.setItem('un', name);
   }
 
 }
