@@ -1,0 +1,26 @@
+<h3>User Form</h3>
+<form [formGroup]="userForm" (ngSubmit)="handleSubmit()">
+  <div>
+    <label for="_id">
+      Id : <input type="text" formControlName="_id">
+    </label>
+  </div>
+  <div>
+    <label for="name">
+      Name : <input type="text" formControlName="name">
+    </label>
+  </div>
+  <div>
+    <label for="age">
+      Age : <input type="text" formControlName="age">
+    </label>
+  </div>
+  <div>
+    <input type="submit" value="Register">
+  </div>
+</form>
+
+<div>
+  Info : <p *ngIf="info">{{info | json}}</p>
+  <p *ngIf="info">Inserted id : {{info.insertedId}}</p>
+</div>
