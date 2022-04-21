@@ -1,0 +1,41 @@
+<div>
+  <h3>Find Account Holder</h3>
+  <div class="form-control">
+    Id : <input class="form-control" type="number" [formControl]="_id">
+  </div>
+  <br>
+  <input type="submit" value="Get" (click)="handleGet(_id.value)">
+
+  <div>
+    <p *ngIf="data">Get Account Data : {{data | json}}</p>
+
+    <!-- <div>
+      <h3 class="text-center text-primary">Profile List</h3>
+      <table class="table table-primary table-striped table-hover">
+        <thead>
+          <tr>
+            <th rowspan="2">Id</th>
+            <th rowspan="2">Name</th>
+            <th rowspan="2">Salary</th>
+            <th colspan="3">Address</th>
+          </tr>
+          <tr>
+            <th>State</th>
+            <th>City</th>
+            <th>Pincode</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="data">
+            <td>{{_id }}</td>
+            <td>{{name }}</td>
+            <td>{{salary }}</td>
+            <td>{{state }}</td>
+            <td>{{city }}</td>
+            <td>{{pincode }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div> -->
+</div>
